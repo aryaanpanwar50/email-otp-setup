@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    // Environment & JS features
+    "lib": ["ESNext"],
+    "target": "ES2020",
+    "module": "Node16",
+    "moduleResolution": "node16",
+    "allowJs": true,
+
+    // Generate outputs for JS and TS consumers
+    "declaration": true,           // generate .d.ts files
+    "outDir": "dist",              // compiled files go here
+    "esModuleInterop": true,       // for commonjs compatibility
+
+    // Strictness & best practices
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true
+  },
+  "include": ["src/**/*"]
+}
