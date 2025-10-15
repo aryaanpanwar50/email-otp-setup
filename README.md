@@ -71,12 +71,23 @@ Import the functions you need:
 import { generateNumericOTP, storeOTP, verifyOTP, sendMail } from "email-otp-setup";
 ```
 
+### Simple Email Sending
+
+*It's not necessary to use OTPs!* You can use this package just to send regular emails:
+
+```js
+import { sendMail } from "email-otp-setup";
+
+// Send a simple email without OTP
+sendMail("My App", "user@example.com", "Welcome!", "Thanks for signing up!");
+```
+
 Functions (summary):
 
 - `generateNumericOTP()` — Generates a random numeric OTP (default 6 digits).
 - `storeOTP(email, otp)` — Stores the OTP for a given email (in-memory).
 - `verifyOTP(email, otp)` — Verifies an OTP for a given email. Returns `true` if valid.
-- `sendMail(sender, receiver, subject, content, otp)` — Sends an OTP email to the recipient. Uses credentials from `.env`.
+- `sendMail(sender, receiver, subject, content, otp)` — Sends an email to the recipient. *OTP parameter is optional* - omit it for regular emails. Uses credentials from `.env`.
 
 ### Example with Express
 
