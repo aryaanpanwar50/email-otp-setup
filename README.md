@@ -95,7 +95,7 @@ const htmlContent = `
   <p>Here is your OTP: <strong>123456</strong></p>
 `;
 
-sendMail("My App", "user@example.com", "Your OTP Code", "Your OTP is:", "123456", htmlContent);
+sendMail("My App", "user@example.com", "Your OTP Code", htmlContent);
 ```
 
 ### OTP Expiration Time
@@ -131,7 +131,7 @@ const htmlContent = `
   <p>Here is your OTP: <strong>${otp}</strong></p>
 `;
 
-sendMail("MY APP", "aryaanpanwar@gmail.com", "OTP to VERIFY", "Here is your OTP:", htmlContent);
+sendMail("MY APP", "aryaanpanwar@gmail.com", "OTP to VERIFY", htmlContent);
 
 console.log("The OTP -> ", otp);
 
