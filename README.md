@@ -10,8 +10,9 @@ A *ready-to-use* Node.js package to send and verify OTPs via email without writi
 ## Features ✨
 
 - *Generate numeric OTPs* easily.
-- *Send OTPs via email* without configuring `nodemailer` in your app.
+- *Send OTPs via email* with support for **custom HTML designs** or plain text.
 - *Store and verify OTPs* (in-memory by default).
+- *Configurable OTP expiration time* (default: 10 minutes).
 - *CLI setup* to generate a `.env` file automatically, or manual `.env` support.
 - Works with *Node.js*, *Express*, and modern bundlers.
 
@@ -82,12 +83,34 @@ import { sendMail } from "email-otp-setup";
 sendMail("My App", "user@example.com", "Welcome!", "Thanks for signing up!");
 ```
 
+### Sending Emails with Custom HTML
+
+You can now send emails with custom HTML designs:
+
+```js
+import { sendMail } from "email-otp-setup";
+
+const htmlContent = `
+  <h1>Welcome to My App</h1>
+  <p>Here is your OTP: <strong>123456</strong></p>
+`;
+
+sendMail("My App", "user@example.com", "Your OTP Code", "Your OTP is:", "123456", htmlContent);
+```
+
+### OTP Expiration Time
+
+- OTPs are valid for **10 minutes** by default.
+- After the expiration time, the OTP will be invalid, and verification will fail.
+
 Functions (summary):
 
 - `generateNumericOTP()` — Generates a random numeric OTP (default 6 digits).
 - `storeOTP(email, otp)` — Stores the OTP for a given email (in-memory).
 - `verifyOTP(email, otp)` — Verifies an OTP for a given email. Returns `true` if valid.
-- `sendMail(sender, receiver, subject, content, otp)` — Sends an email to the recipient. *OTP parameter is optional* - omit it for regular emails. Uses credentials from `.env`.
+- `sendMail(sender, receiver, subject, content, otp, htmlContent)` — Sends an email to the recipient. *OTP and HTML content are optional* - omit them for regular emails. Uses credentials from `.env`.
+
+---
 
 ### Example with Express
 
@@ -103,7 +126,12 @@ const otp = generateNumericOTP();
 storeOTP("aryaanpanwar@gmail.com", otp);
 
 // Send OTP email
-sendMail("MY APP", "aryaanpanwar@gmail.com", "OTP to VERIFY", "Here is your OTP:", otp);
+const htmlContent = `
+  <h1>Welcome to My App</h1>
+  <p>Here is your OTP: <strong>${otp}</strong></p>
+`;
+
+sendMail("MY APP", "aryaanpanwar@gmail.com", "OTP to VERIFY", "Here is your OTP:", htmlContent);
 
 console.log("The OTP -> ", otp);
 

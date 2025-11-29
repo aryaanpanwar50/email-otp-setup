@@ -22,13 +22,13 @@ const transporter = nodemailer.createTransport({
 })
 
 
-async function sendMail(sender:string,receiver:string,subject:string,content:string,otp?:string) {
+async function sendMail(sender:string,receiver:string,subject:string,content:string) {
     try{
         const info = await transporter.sendMail({
             from : `${sender}<example@gmail.com>`,
             to:receiver,
             subject:subject,
-            text:otp ? `${content} ${otp}` : content,
+            html:content
         })
 
         console.log("Email send",info.messageId)

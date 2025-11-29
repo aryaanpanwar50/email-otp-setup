@@ -2,7 +2,7 @@ import crypto from "crypto";
 
 
 
-const OTP_TTL = 5 * 60 * 1000;
+const OTP_TTL = 10 * 60 * 1000;
 
 
 type OTPRecord={
