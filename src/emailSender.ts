@@ -11,16 +11,13 @@ if (!email || !pass) {
 }
 
 const transporter = nodemailer.createTransport({
-    host:"smtp.gmail.com",
-    port: 465,
-    secure: true,
+    service:"gmail",
     auth:{
         user:email,
         pass:pass,
     }
 
 })
-
 
 async function sendMail(sender:string,receiver:string,subject:string,content:string) {
     try{
