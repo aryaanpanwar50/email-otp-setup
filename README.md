@@ -149,13 +149,7 @@ app.listen(3000, () => {
 
 ---
 
-## Notes
 
-- Make sure you set your email and app password in `.env`.
-- OTPs are stored *in memory* by default; for production, integrate with a database or cache.
-- This package works out-of-the-box with Express or any Node.js backend.
-
----
 
 ## Contributing 🤝
 

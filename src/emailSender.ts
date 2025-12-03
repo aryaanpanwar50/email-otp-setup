@@ -1,13 +1,13 @@
 import nodemailer from "nodemailer";
-import dotenv from "dotenv";
 
-dotenv.config();
+// Don't call dotenv.config() here - let the consuming application handle it
+// This allows the package to work in any environment (local, Render, AWS, etc.)
 
 const email = process.env.EMAIL;
 const pass = process.env.PASS;
 
 if (!email || !pass) {
-    throw new Error("EMAIL and PASS environment variables must be set");
+    throw new Error("EMAIL and PASS environment variables must be set. Make sure to set EMAIL and PASS in your environment or .env file.");
 }
 
 const transporter = nodemailer.createTransport({
